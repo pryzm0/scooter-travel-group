@@ -1,0 +1,16 @@
+{
+  "name": "scootertrip",
+  "version": "0.0.1",
+  "authors": [
+    "Konstantin Kopkov <pryzm0@gmail.com>"
+  ],
+  "description": "Web front-end for scootertrip",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
