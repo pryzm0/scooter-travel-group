@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+    meta(name='viewport', content='width=device-width', initial-scale='1.0')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title Phuket Scooter Travel Group
+
+    link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.min.css')
+    //- link(rel='stylesheet', href='/css/app.css')
+
+    //if lte IE 7
+      script(src='http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js')
+    //if lte IE 8
+      script(src='//html5shiv.googlecode.com/svn/trunk/html5.js')
+
+    script(src='vendor/jquery/dist/jquery.min.js')
+    script(src='vendor/bootstrap/dist/js/bootstrap.min.js')
+
+  body
+    nav.navbar.navbar-inverse.navbar-static-top
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') Phuket Scooter Travel Group
+
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/login') Login
+
+    footer.footer
+      .container
+        p UNDER CONSTRUCTION
+        

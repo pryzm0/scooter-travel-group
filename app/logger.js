@@ -1,5 +1,7 @@
 
 var bunyan = require('bunyan');
+var bformat = require('bunyan-format'),
+  formatOut = bformat({ outputMode: 'short' });
 
 module.exports = bunyan.createLogger({
   name: 'scootertrip',
@@ -7,7 +9,7 @@ module.exports = bunyan.createLogger({
     res: bunyan.stdSerializers.res,
   },
   streams: [
-    { level: 'trace', stream: process.stdout },
-    { level: 'info', path: 'log/scootertrip.log'},
+    { level: 'trace', stream: formatOut },
+    { level: 'info', path: 'log/scootertrip.log' },
   ],
 });

@@ -10,5 +10,12 @@
     "express": "^4.13.1",
     "nano": "^6.1.4",
     "nconf": "^0.7.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "coffee-script": "~1.9.3",
+    "gulp-develop-server": "~0.4.3",
+    "bunyan-format": "~0.2.1",
+    "gulp-jade": "~1.0.1"
   }
 }

@@ -1,14 +1,8 @@
-
-var express = require('express');
-var http = require('http');
-
+var app = require('./app');
 var nconf = require('./app/config');
 var logger = require('./app/logger');
 
-var app = express();
-
-app.use('/static', express.static('./bower_components'));
-app.use('/static', express.static('./www'));
+var http = require('http');
 
 http.createServer(app).listen(nconf.get('port'), function () {
   logger.info('server started at', nconf.get('port'));
