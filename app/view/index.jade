@@ -1,9 +1,17 @@
-extends layout
+extends _layout
 
 block content
   h1.text-center PHUKET MOTO FRIENDS
 
 block content-local
-  hr
-  .content.text-center
-    i.fa.fa-motorcycle.fa-5x
+  .container.text-center
+    hr
+    i#bike.fa.fa-motorcycle.fa-5x
+
+  .container
+    hr
+    .row
+      .col-md-6
+        include _lorem
+      .col-md-6
+        include _lorem

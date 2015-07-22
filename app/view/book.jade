@@ -1,0 +1,63 @@
+extends _layout
+
+//- block style-local
+//-   link(rel='stylesheet', href='/vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')
+
+//- block script-local
+//-   script(src='/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')
+//-   script.
+//-     $(function () {
+//-       $('.datepicker').datepicker({
+//-           defaultViewDate: '+2d',
+//-           startDate: '+1d'
+//-         }).update(new Date());
+//-       });
+
+
+block content
+  h2 Оставить заявку
+
+block content-local
+  .container
+    br
+    br
+    .row
+      .col-md-6
+        form.form-horizontal
+          .form-group
+            label.col-md-4.control-label Маршрут
+            .col-md-8
+              select.form-control
+                option(value='север') Север
+                option(value='юг') Юг
+                option(value='восток', selected) Восток
+                option(value='запад') Запад
+                option(value='вниз') Вниз
+                option(value='вверх') Вверх
+          .form-group
+            label.col-md-4.control-label Имя
+            .col-md-8
+              input.form-control(type='text', autofocus)
+          .form-group
+            label.col-md-4.control-label Почта
+            .col-md-8
+              input.form-control(type='email', placeholder='@mail.ru')
+          .form-group
+            label.col-md-4.control-label Телефон
+            .col-md-8
+              input.form-control(type='text', placeholder='+7 ')
+          .form-group
+            label.col-md-4.control-label Дата
+            .col-md-8
+              //- input.form-control.datepicker
+              input.form-control(type='date')
+          .form-group
+            label.col-md-4.control-label Комментарий
+            .col-md-8
+              textarea.form-control(rows='5')
+          .form-group
+            .col-md-12.text-right
+              button.btn.btn-primary Готово
+
+      .col-md-6
+        include _lorem

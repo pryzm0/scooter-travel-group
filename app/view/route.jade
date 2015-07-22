@@ -1,11 +1,12 @@
-extends layout
+extends _layout
 
 block content
   h2.route-name #{name}
 
   img#islandmap.pull-right(src='/map-phuket.jpg')
 
-  include lorem
+  include _lorem
 
   h3(style={'margin-top':'2em'})
-    button.btn.btn-success: i.fa.fa-hand-o-right &nbsp;&nbsp;Принять участие
+    a(href='/travel')
+      button.btn.btn-success: i.fa.fa-hand-o-right &nbsp;&nbsp;Принять участие

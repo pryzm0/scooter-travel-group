@@ -1,20 +1,30 @@
-extends layout
+extends _layout
 
 block content
   h2 Наши гиды
 
 block content-local
-  .content.guide-main
+  .container
     .row
-      .col-md-3.text-center.guide-info
-        img.img-thumbnail(src='/chuck.jpg')
-        div: a(href='/guide/андрей') Андрей
-      .col-md-3.text-center.guide-info
-        img.img-thumbnail(src='/chuck.jpg')
-        div: a(href='/guide/борян') Борян
-      .col-md-3.text-center.guide-info
-        img.img-thumbnail(src='/chuck.jpg')
-        div: a(href='/guide/валентин') Валентин
-      .col-md-3.text-center.guide-info
-        img.img-thumbnail(src='/chuck.jpg')
-        div: a(href='/guide/гиппократ') Гиппократ
+      .col-md-5
+        include _lorem
+
+      .col-md-1 &nbsp;
+
+      .col-md-6
+
+        .row.guide-row
+          .col-md-6.text-center.guide-info
+            a(href='/guide/андрей'): img.img-thumbnail(src='/chuck.jpg')
+            div: a(href='/guide/андрей') Андрей
+          .col-md-6.text-center.guide-info
+            a(href='/guide/андрей'): img.img-thumbnail(src='/chuck.jpg')
+            div: a(href='/guide/борян') Борян
+
+        .row.guide-row
+          .col-md-6.text-center.guide-info
+            a(href='/guide/андрей'): img.img-thumbnail(src='/chuck.jpg')
+            div: a(href='/guide/валентин') Валентин
+          .col-md-6.text-center.guide-info
+            a(href='/guide/андрей'): img.img-thumbnail(src='/chuck.jpg')
+            div: a(href='/guide/гиппократ') Гиппократ

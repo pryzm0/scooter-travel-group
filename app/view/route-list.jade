@@ -1,24 +1,26 @@
-extends layout
+extends _layout
 
 block content
   h2 Маршруты поездок
 
+  br
+
   ul.fa-ul
     li
       i.fa-li.fa.fa-chevron-circle-right
-      a(href='/route/north') На север
+      h4: a(href='/route/север') На север
     li
       i.fa-li.fa.fa-chevron-circle-right
-      a(href='/route/south') На юг
+      h4: a(href='/route/юг') На юг
     li
       i.fa-li.fa.fa-chevron-circle-right
-      a(href='/route/west') На запад
+      h4: a(href='/route/запад') На запад
     li
       i.fa-li.fa.fa-chevron-circle-right
-      a(href='/route/east') На восток
+      h4: a(href='/route/восток') На восток
     li
       i.fa-li.fa.fa-chevron-circle-right
-      a(href='/route/up') Вверх
+      h4: a(href='/route/вверх') Вверх
     li
       i.fa-li.fa.fa-chevron-circle-right
-      a(href='/route/down') Вниз
+      h4: a(href='/route/вниз') Вниз

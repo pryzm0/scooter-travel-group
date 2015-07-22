@@ -14,3 +14,6 @@ module.exports = (app) ->
 
   app.get '/route/:name', (req, res) ->
     res.render 'route', req.params
+
+  app.get '/travel', (req, res) ->
+    res.render 'book', req.params

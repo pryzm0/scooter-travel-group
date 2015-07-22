@@ -1,14 +1,15 @@
 
+#bike:hover {
+	-webkit-transition: all 1s ease;
+	-webkit-transform: rotate(360deg);
+}
+
 #islandmap {
 	max-height: 400px;
 	margin: 0 0 2em 2em;
 }
 
-.guide-main {
-	margin-top: 2em;
-}
-
-.guide-info img {
+.guide-row {
 	margin-bottom: 1em;
 }
 

@@ -1,20 +1,24 @@
-extends layout
+extends _layout
 
 block content
   h2.guide-name #{name}
 
-  h4.text-center
+  h4.text-right
     ul.list-inline
-      li: a(href='/route/north') На север
+      li Маршруты:
+      li: a(href='/route/север') На север
       li &mdash;
-      li: a(href='/route/west') На запад
+      li: a(href='/route/запад') На запад
       li &mdash;
-      li: a(href='/route/up') Вверх
-
-  img.img-rounded.pull-left.guide-portrait(src='/chuck.jpg')
-
-  include lorem
+      li: a(href='/route/вверх') Вверх
 
 block content-local
-  .content.text-center
+  .container
+    img.img-rounded.pull-left.guide-portrait(src='/chuck.jpg')
+
+    include _lorem
+
+  .container.text-center
+    hr
+
     button.btn.btn-info Вопросы гиду
