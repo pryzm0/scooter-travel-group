@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h2.guide-name #{name}
+
+  h4.text-center
+    ul.list-inline
+      li: a(href='/route/north') На север
+      li &mdash;
+      li: a(href='/route/west') На запад
+      li &mdash;
+      li: a(href='/route/up') Вверх
+
+  img.img-rounded.pull-left.guide-portrait(src='/chuck.jpg')
+
+  include lorem
+
+block content-local
+  .content.text-center
+    button.btn.btn-info Вопросы гиду

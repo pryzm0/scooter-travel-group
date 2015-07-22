@@ -1,3 +1,5 @@
+require('coffee-script/register');
+
 var app = require('./app');
 var nconf = require('./app/config');
 var logger = require('./app/logger');

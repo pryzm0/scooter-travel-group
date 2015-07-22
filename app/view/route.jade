@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h2.route-name #{name}
+
+  img#islandmap.pull-right(src='/map-phuket.jpg')
+
+  include lorem
+
+  h3(style={'margin-top':'2em'})
+    button.btn.btn-success: i.fa.fa-hand-o-right &nbsp;&nbsp;Принять участие

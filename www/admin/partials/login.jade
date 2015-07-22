@@ -1,0 +1,18 @@
+
+.panel.panel-primary(ng-controller='LoginController')
+  .panel-heading
+    h3.panel-title Log In
+
+  .panel-body
+    form.form-horizontal(ng-submit='login()')
+      .form-group(ng-class='{"has-error": formError}')
+        label.control-label.col-sm-2 Email
+        .col-sm-10
+          input.form-control(type='text', ng-model='formData.name')
+      .form-group(ng-class='{"has-error": formError}')
+        label.control-label.col-sm-2 Password
+        .col-sm-10
+          input.form-control(type='password', ng-model='formData.password')
+      .form-group
+        .col-sm-12.text-right
+          button.btn.btn-default(type='submit') Log In
