@@ -2,3 +2,4 @@ node_modules/
 bower_components/
 www_public/
 log/
+config.json

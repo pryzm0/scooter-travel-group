@@ -1,5 +1,7 @@
 
-module.exports = (require 'nconf').argv().env()
+module.exports = (require 'nconf')
+  .argv()
+  .file( file: 'config.json' )
   .defaults {
     port: 8080
     admin: true
