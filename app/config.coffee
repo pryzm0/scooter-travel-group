@@ -6,12 +6,23 @@ module.exports = (require 'nconf')
     host: '127.0.0.1'
     port: 8080
     admin: true
-    static: true
     session:
       secretKey: '--/--'
     couch:
       users: 'http://127.0.0.1:5984/_users'
+    static:
+      serve: true
+      dir: {
+        '/bower_components': './bower_components'
+        '/assets': './www_public/assets'
+      }
     logger:
-      name: 'backend'
-      file: 'log/backend.log'
+      name: 'rabbit'
+      debugRequest: false
+      stdout:
+        level: 'trace'
+        bformat: 'short'
+      file:
+        level: 'info'
+        path: 'log/rabbit.log'
   }

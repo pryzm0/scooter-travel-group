@@ -13,8 +13,9 @@ app.set 'view engine', 'jade'
 app.use cookieParser()
 app.use bodyParser.json()
 
-# app.use (req, res, next) ->
-#   app.logger.debug { req } ; next()
+if nconf.get 'logger:debugRequest'
+  app.use (req, res, next) ->
+    app.logger.debug { req } ; next()
 
 (require './front-end')(app)
 
@@ -35,10 +36,10 @@ if nconf.get 'admin'
     adminRoles: ['admin']
   }
 
-if nconf.get 'static'
+if nconf.get 'static:serve'
   app.logger.info 'serve static'
-
-  app.use '/bower_components', (express.static './bower_components')
-  app.use '/', (express.static './www_public')
+  for own path, dir of nconf.get 'static:dir'
+    app.logger.debug 'static', path, '->', dir
+    app.use path, (express.static ".#{dir}")
 
 module.exports = app
