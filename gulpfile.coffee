@@ -9,6 +9,7 @@ paths =
   server: 'index.js'
   app: ['app/**/*.js', 'app/**/*.coffee']
   public: 'www_public/'
+  assets: ['www/**/*.jpg']
   templates: ['www/**/*.jade']
   scripts: ['www/**/*.js', 'www/**/*.coffee']
   styles: ['www/**/*.css']
@@ -21,6 +22,10 @@ gulp.task 'server:restart', ->
 
 gulp.task 'server', ['server:start'], ->
   gulp.watch paths.app, ['server:restart']
+
+gulp.task 'assets', ->
+  gulp.src(paths.assets)
+    .pipe(gulp.dest paths.public)
 
 gulp.task 'templates', ->
   gulp.src(paths.templates)
@@ -36,7 +41,7 @@ gulp.task 'styles', ->
   gulp.src(paths.styles)
     .pipe(gulp.dest paths.public)
 
-gulp.task 'build', ['templates', 'scripts', 'styles']
+gulp.task 'build', ['assets', 'templates', 'scripts', 'styles']
 
 gulp.task 'watch', ['build'], ->
   gulp.watch paths.templates, ['templates']
