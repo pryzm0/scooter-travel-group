@@ -38,7 +38,7 @@ if nconf.get 'admin'
 if nconf.get 'static'
   app.logger.info 'serve static'
 
-  app.use '/vendor', (express.static './bower_components')
+  app.use '/bower_components', (express.static './bower_components')
   app.use '/', (express.static './www_public')
 
 module.exports = app

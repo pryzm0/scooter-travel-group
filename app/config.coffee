@@ -8,7 +8,7 @@ module.exports = (require 'nconf')
     admin: true
     static: true
     session:
-      secretKey: 'NOONEKNOWS'
+      secretKey: '--/--'
     couch:
       users: 'http://127.0.0.1:5984/_users'
     logger:
