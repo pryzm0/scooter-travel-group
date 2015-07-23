@@ -21,7 +21,8 @@ module.exports = (require 'nconf')
       debugRequest: false
       stdout:
         level: 'trace'
-        bformat: 'short'
+        bformat:
+          outputMode: 'short'
       file:
         level: 'info'
         path: 'log/rabbit.log'

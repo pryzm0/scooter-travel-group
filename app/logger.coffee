@@ -6,11 +6,14 @@ nconf = require './config'
 streams = []
 
 if stdoutLevel = nconf.get 'logger:stdout:level'
-  bformatMode = nconf.get 'logger:stdout:bformat'
+  if bformatOpts = nconf.get 'logger:stdout:bformat'
+    stdout = bformat bformatOpts
+  else
+    stdout = process.stdout
+
   streams.push {
     level: stdoutLevel
-    stream: ((not bformatMode and process.stdout) or
-      bformat { outputMode: bformatMode })
+    stream: stdout
   }
 
 if fileLevel = nconf.get 'logger:file:level'
