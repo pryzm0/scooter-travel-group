@@ -1,12 +1,11 @@
 extends _layout
 
+block title
+  title #{article.title} &mdash; Пхукет на мотобайках / Phuket Scooter Travel
+
 block content
-  h2.route-name #{name}
-
-  img#islandmap.pull-right(src='/assets/map-phuket.jpg')
-
-  include _lorem
+  div.article-travel-content!= _markdown(article.content)
 
   h3(style={'margin-top':'2em'})
-    a(href='/travel')
+    a(href='/travel/next')
       button.btn.btn-success: i.fa.fa-hand-o-right &nbsp;&nbsp;Принять участие

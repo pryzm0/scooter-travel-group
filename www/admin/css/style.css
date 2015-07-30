@@ -1,0 +1,15 @@
+.login-form {
+	margin-top: 25vh;
+}
+.oauth-container {
+	margin-top: 3vh;
+}
+.oauth-login {
+	margin-right: .6em;
+}
+.tab-content {
+	padding: 1em;
+}
+.ng-table-pager {
+    display: none;
+}

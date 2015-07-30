@@ -7,11 +7,13 @@ html(ng-app='AdminApp')
     meta(name='description', content='')
     meta(name='author', content='')
     title Phuket Scooter Travel - ADMIN
-    base(href='/admin/')
+    //- base(href='/admin/')
 
     link(rel='stylesheet', href='/bower_components/font-awesome/css/font-awesome.min.css')
     link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
     link(rel='stylesheet', href='/bower_components/angular/angular-csp.css')
+    link(rel='stylesheet', href='/bower_components/angular-bootstrap/ui-bootstrap-csp.css')
+    link(rel='stylesheet', href='/bower_components/ng-table/dist/ng-table.min.css')
     link(rel='stylesheet', href='css/style.css')
 
     //if lte IE 7
@@ -24,23 +26,23 @@ html(ng-app='AdminApp')
     script(src='/bower_components/angular/angular.min.js')
     script(src='/bower_components/angular-route/angular-route.min.js')
     script(src='/bower_components/angular-resource/angular-resource.min.js')
+    script(src='/bower_components/angular-bootstrap/ui-bootstrap.min.js')
+    script(src='/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js')
+    script(src='/bower_components/ng-table/dist/ng-table.min.js')
 
   body(ng-controller='MainController' ng-cloak)
 
-    include ./menu.jade
+    div(ng-include='"partials/menu.html"', ng-if='session.currentUser.ok')
 
     .container(ng-if='!session.currentUser.ok')
       div(ng-include='"partials/login.html"')
 
-    .container
-      div(ng-view)
+    div(ng-view, ng-if='session.currentUser.ok')
 
-    footer.footer
-      .container
-        <hr/>
-        p UNDER CONSTRUCTION
+    //- footer.footer
+    //-   .container
 
     script(src='js/app.js')
     script(src='js/controllers.js')
-    script(src='js/menu.js')
+    script(src='js/resources.js')
     script(src='js/session.js')

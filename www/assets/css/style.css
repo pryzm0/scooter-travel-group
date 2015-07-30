@@ -4,11 +4,6 @@
 	-webkit-transform: rotate(360deg);
 }
 
-#islandmap {
-	max-height: 400px;
-	margin: 0 0 2em 2em;
-}
-
 .guide-row {
 	margin-bottom: 1em;
 }
@@ -29,4 +24,35 @@
 .route-name {
 	text-transform: capitalize;
 	font-style: italic;
+}
+
+.article-travel-content {
+}
+
+.article-travel-content p img {
+	margin: 1em auto;
+	display: block;
+	max-width: 560px;
+}
+
+.article-travel-content h1 img {
+	float: right;
+	max-height: 400px;
+	margin: 0 0 2em 2em;
+}
+
+.article-travel-content h2+p img {
+	float: left;
+	max-width: 160px;
+	margin: 0 2em 2em 0;
+}
+
+.article-travel-content blockquote img {
+	float: left;
+	max-width: 160px;
+	margin: 0 2em 2em 0;
+}
+
+.article-travel-content blockquote h5 {
+	clear: both;
 }

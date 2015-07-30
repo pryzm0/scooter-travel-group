@@ -1,18 +1,28 @@
+.row.login-form
+  .col-md-3
+  .col-md-6
+    .panel.panel-primary(ng-controller='LoginController')
+      .panel-heading
+        h3.panel-title Authentication Required
+      .panel-body
+        form.form-horizontal(ng-submit='login()')
+          .form-group(ng-class='{"has-error": formError}')
+            label.control-label.col-sm-2 Email
+            .col-sm-10
+              input.form-control(type='text', ng-model='formData.name')
+          .form-group(ng-class='{"has-error": formError}')
+            label.control-label.col-sm-2 Password
+            .col-sm-10
+              input.form-control(type='password', ng-model='formData.password')
+          .form-group
+            .col-sm-12.text-right
+              button.btn.btn-default(type='submit') Login
+      .panel-footer.text-center
+        a(href='#/connect'): i.fa.fa-2x.fa-vk.oauth-login
+        a(href='#/connect'): i.fa.fa-2x.fa-facebook-square.oauth-login
+        a(href='#/connect'): i.fa.fa-2x.fa-twitter-square.oauth-login
+        a(href='#/connect'): i.fa.fa-2x.fa-instagram.oauth-login
+        a(href='/connect/google', target='_blank')
+          i.fa.fa-2x.fa-google-plus-square.oauth-login
 
-.panel.panel-primary(ng-controller='LoginController')
-  .panel-heading
-    h3.panel-title Log In
-
-  .panel-body
-    form.form-horizontal(ng-submit='login()')
-      .form-group(ng-class='{"has-error": formError}')
-        label.control-label.col-sm-2 Email
-        .col-sm-10
-          input.form-control(type='text', ng-model='formData.name')
-      .form-group(ng-class='{"has-error": formError}')
-        label.control-label.col-sm-2 Password
-        .col-sm-10
-          input.form-control(type='password', ng-model='formData.password')
-      .form-group
-        .col-sm-12.text-right
-          button.btn.btn-default(type='submit') Log In
+  .col-md-3

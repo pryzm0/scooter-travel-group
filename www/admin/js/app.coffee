@@ -1,19 +1,20 @@
 'use strict'
 
 angular.module 'AdminApp', [
+  'ui.bootstrap'
   'ngRoute'
   'ngResource'
+  'ngTable'
 ]
 .config [
   '$routeProvider', '$locationProvider',
   ($routeProvider, $locationProvider) ->
     $routeProvider
-      .when '/routes', {
-        templateUrl: 'partials/routes.html'
+      .when '/travel', {
+        templateUrl: 'partials/travel.html'
+        controller: 'EditTravelController'
       }
-      .when '/staff', {
-        templateUrl: 'partials/staff.html'
-      }
+      .otherwise '/travel'
 
-    $locationProvider.html5Mode(true)
+    $locationProvider.html5Mode(false)
 ]

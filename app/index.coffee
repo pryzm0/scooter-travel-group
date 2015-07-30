@@ -1,6 +1,7 @@
 express = require 'express'
 cookieParser = require 'cookie-parser'
 bodyParser = require 'body-parser'
+session = require 'express-session'
 
 app = express()
 
@@ -12,34 +13,31 @@ app.set 'view engine', 'jade'
 
 app.use cookieParser()
 app.use bodyParser.json()
+app.use session(nconf.get 'session')
 
-if nconf.get 'logger:debugRequest'
-  app.use (req, res, next) ->
-    app.logger.debug { req } ; next()
+(app.use (req, res, next) ->
+  app.logger.debug { req }, req.path
+  next()) if (nconf.get 'logger:debugRequest')
 
-(require './front-end')(app)
+routes = nconf.get 'routes'
+Object.keys(routes).forEach (path) ->
+  route = require "./#{routes[path]}"
+  app.use path, route
 
 if nconf.get 'admin'
-  app.logger.info 'run admin'
+  app.logger.info '* run admin *'
 
-  session = require 'express-session'
-  users = require 'express-user-couchdb'
+  # Grant = require 'grant-express'
+  couchUser = require 'express-user-couchdb'
 
-  app.use session {
-    secret: nconf.get 'session:secretKey'
-    resave: false
-    saveUninitialized: false
-  }
-
-  app.use users {
-    users: nconf.get 'couch:users'
-    adminRoles: ['admin']
-  }
+  # app.use (new Grant(nconf.get 'grant'))
+  app.use couchUser(nconf.get 'couch')
 
 if nconf.get 'static:serve'
-  app.logger.info 'serve static'
-  for own path, dir of nconf.get 'static:dir'
+  app.logger.info '* serve static *'
+  resolvePath = (require 'path').resolve
+  for own path, dir of nconf.get 'static:dir' when (dir = resolvePath dir)
     app.logger.debug 'static', path, '->', dir
-    app.use path, (express.static ".#{dir}")
+    app.use path, (express.static dir)
 
 module.exports = app

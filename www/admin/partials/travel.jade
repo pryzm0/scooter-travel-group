@@ -1,0 +1,26 @@
+
+.container
+  .row
+    .col-md-4
+      table.table(ng-table='tableParams')
+        tr(ng-repeat='row in $data')
+          td(data-title='"Название"') {{ row.doc.title }}
+          td(data-title='"Автор"') {{ row.doc.author.id }}
+          td.text-right
+            button.btn.btn-xs.btn-default(ng-click='load(row)')
+              i.fa.fa-edit
+            span &nbsp;
+            button.btn.btn-xs.btn-default(ng-click='remove(row)')
+              i.fa.fa-remove
+
+      div.text-left
+        button.btn.btn-success(ng-click='create()') Создать
+
+    .col-md-8(ng-if='travelEdit')
+      h4(ng-if='!travelEdit._rev') Новый маршрут
+      h4(ng-if='travelEdit._rev') {{ travelEdit.title }}
+
+      tabset(justified='true')
+        tab(heading='Form'): div(ng-include='"partials/travel-form.html"')
+        tab(heading='Markdown'): div Markdown
+        tab(heading='Gallery'): div Gallery

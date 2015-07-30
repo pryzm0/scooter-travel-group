@@ -1,0 +1,32 @@
+
+form.form-horizontal.my-content-form(ng-submit='update()')
+  .form-group(ng-class='{"has-error": formError}')
+    label.control-label.col-sm-2 Название
+    .col-sm-10
+      input.form-control(type='text', ng-model='travelEdit.title', autofocus)
+  .form-group(ng-class='{"has-error": formError}')
+    label.control-label.col-sm-2 Гид
+    .col-sm-10
+      select.form-control(ng-model='travelEdit.author.id')
+        option(value='egor') Егор
+        option(value='ivan') Иван
+        option(value='solon') Солон
+  .form-group(ng-class='{"has-error": formError}')
+    label.control-label.col-sm-2 Содержание
+    .col-sm-10
+      textarea.form-control(rows=10, ng-model='travelEdit.content')
+  .form-group(ng-class='{"has-error": formError}')
+    label.control-label.col-sm-2 Путь
+    .col-sm-10
+      input.form-control(type='text', ng-model='travelEdit.link')
+  .form-group(ng-class='{"has-error": formError}')
+    label.control-label.col-sm-2 Тэги
+    .col-sm-10
+      input.form-control(type='text', ng-model='travelEdit.keywords')
+  .form-group(ng-class='{"has-error": formError}')
+    label.control-label.col-sm-2 Описание
+    .col-sm-10
+      input.form-control(type='text', ng-model='travelEdit.description')
+  .form-group
+    .col-sm-12.text-right
+      button.btn.btn-default(type='submit') Сохранить

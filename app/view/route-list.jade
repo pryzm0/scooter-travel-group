@@ -3,24 +3,6 @@ extends _layout
 block content
   h2 Маршруты поездок
 
-  br
-
-  ul.fa-ul
-    li
-      i.fa-li.fa.fa-chevron-circle-right
-      h4: a(href='/route/север') На север
-    li
-      i.fa-li.fa.fa-chevron-circle-right
-      h4: a(href='/route/юг') На юг
-    li
-      i.fa-li.fa.fa-chevron-circle-right
-      h4: a(href='/route/запад') На запад
-    li
-      i.fa-li.fa.fa-chevron-circle-right
-      h4: a(href='/route/восток') На восток
-    li
-      i.fa-li.fa.fa-chevron-circle-right
-      h4: a(href='/route/вверх') Вверх
-    li
-      i.fa-li.fa.fa-chevron-circle-right
-      h4: a(href='/route/вниз') Вниз
+  ul
+    each article in articles
+      li: a(href='/travel/#{article.link}') #{article.title}
