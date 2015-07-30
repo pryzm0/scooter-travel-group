@@ -6,6 +6,8 @@ angular.module 'AdminApp', [
   'ngResource'
   'ngTable'
 ]
+.directive 'markdownEditor', ->
+  ($scope, $element) -> $element.markdown()
 .config [
   '$routeProvider', '$locationProvider',
   ($routeProvider, $locationProvider) ->
