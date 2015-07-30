@@ -13,7 +13,11 @@ app.set 'view engine', 'jade'
 
 app.use cookieParser()
 app.use bodyParser.json()
-app.use session(nconf.get 'session')
+
+sessionConf = nconf.get 'session'
+if storeConf = nconf.get 'session:store:memcached'
+  sessionConf.store = new MemcachedStore(storeConf)
+app.use session(sessionConf)
 
 (app.use (req, res, next) ->
   app.logger.debug { req }, req.path
