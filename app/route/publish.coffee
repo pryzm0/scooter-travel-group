@@ -11,21 +11,21 @@ router.use (req, res, next) ->
     res.status(401).json { error: 'forbidden' }
   else
     req.db = nano({
-      url: nconf.get 'admin:database'
+      url: nconf.get 'database:url'
       cookie: req.session.nano.cookie
     })
     next()
 
 router.get '/travel', (req, res) ->
-  req.db.list { include_docs: true }, (err, body) ->
+  req.db.view 'articles', 'all', (err, body) ->
     if err then res.status(500).json(err)
     else res.json {
       total: body.rows.length
       rows: body.rows.map (row) ->
-        id: row.id
+        id: row.key
         doc: {
-          title: row.doc.title
-          author: row.doc.author
+          title: row.value.title
+          author: row.value.author
         }
     }
 

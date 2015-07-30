@@ -16,6 +16,8 @@ app.use bodyParser.json()
 
 sessionConf = nconf.get 'session'
 if storeConf = nconf.get 'session:store:memcached'
+  app.logger.debug '* use memcached session store *', storeConf
+  MemcachedStore = (require 'connect-memcached')(session)
   sessionConf.store = new MemcachedStore(storeConf)
 app.use session(sessionConf)
 

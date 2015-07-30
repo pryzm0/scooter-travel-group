@@ -19,7 +19,8 @@
     "grant-express": "~3.4.0",
     "remarkable": "~1.6.0",
     "marked": "~0.3.4",
-    "lodash": "~3.10.0"
+    "lodash": "~3.10.0",
+    "connect-memcached": "~0.1.0"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

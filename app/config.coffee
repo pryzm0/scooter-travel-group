@@ -5,8 +5,7 @@ module.exports = (require 'nconf')
   .defaults {
     host: '127.0.0.1'
     port: 8080
-    admin:
-      database: 'http://127.0.0.1:5984/travelapp'
+    admin: true
     routes: {
       '/': 'route/index'
       # '/auth': 'route/oauth'
