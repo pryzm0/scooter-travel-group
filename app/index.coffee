@@ -1,49 +1,29 @@
+nconf = require './config'
+logger = require './logger'
+
 express = require 'express'
-cookieParser = require 'cookie-parser'
-bodyParser = require 'body-parser'
-session = require 'express-session'
-
 app = express()
-
-app.conf = nconf = require './config'
-app.logger = require './logger'
 
 app.set 'views', "#{__dirname}/view"
 app.set 'view engine', 'jade'
 
-app.use cookieParser()
-app.use bodyParser.json()
-
-sessionConf = nconf.get 'session'
-if storeConf = nconf.get 'session:store:memcached'
-  app.logger.debug '* use memcached session store *', storeConf
-  MemcachedStore = (require 'connect-memcached')(session)
-  sessionConf.store = new MemcachedStore(storeConf)
-app.use session(sessionConf)
-
-(app.use (req, res, next) ->
-  app.logger.debug { req }, req.path
-  next()) if (nconf.get 'logger:debugRequest')
-
-routes = nconf.get 'routes'
-Object.keys(routes).forEach (path) ->
-  route = require "./#{routes[path]}"
-  app.use path, route
-
-if nconf.get 'admin'
-  app.logger.info '* run admin *'
-
-  # Grant = require 'grant-express'
-  couchUser = require 'express-user-couchdb'
-
-  # app.use (new Grant(nconf.get 'grant'))
-  app.use couchUser(nconf.get 'couch')
+app.use (require 'body-parser').json()
+app.use (require './route/index')
 
 if nconf.get 'static:serve'
-  app.logger.info '* serve static *'
+  logger.info '* serve static *'
   resolvePath = (require 'path').resolve
-  for own path, dir of nconf.get 'static:dir' when (dir = resolvePath dir)
-    app.logger.debug 'static', path, '->', dir
+  for own path, dir of (nconf.get 'static:dir') \
+      when dir = (resolvePath dir)
+    logger.debug 'static', path, '->', dir
     app.use path, (express.static dir)
 
-module.exports = app
+# export start()
+module.exports = ->
+  http = require 'http'
+
+  host = nconf.get 'host'
+  port = nconf.get 'port'
+
+  http.createServer(app).listen port, host, ->
+    logger.info "server started at #{host}:#{port}"

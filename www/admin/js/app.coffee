@@ -5,11 +5,14 @@ angular.module 'AdminApp', [
   'ngRoute'
   'ngResource'
   'ngTable'
+  'pouchdb'
 ]
+.constant 'Conf', {
+  database: 'http://localhost:5984/travelapp'
+}
 .directive 'markdownEditor', ->
   ($scope, $element) -> $element.markdown()
-.config [
-  '$routeProvider', '$locationProvider',
+.config ['$routeProvider', '$locationProvider',
   ($routeProvider, $locationProvider) ->
     $routeProvider
       .when '/travel', {

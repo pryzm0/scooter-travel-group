@@ -48,4 +48,5 @@ gulp.task 'watch', ['build'], ->
   gulp.watch paths.scripts, ['scripts']
   gulp.watch paths.styles, ['styles']
 
+gulp.task 'admin', ['watch']
 gulp.task 'default', ['watch', 'server']

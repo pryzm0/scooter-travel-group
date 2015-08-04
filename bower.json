@@ -23,6 +23,9 @@
     "font-awesome": "~4.3.0",
     "ng-table": "~0.8.0",
     "bootstrap-markdown": "~2.9.0",
-    "markdown": "~0.5.0"
+    "markdown": "~0.5.0",
+    "pouchdb": "~3.6.0",
+    "pouchdb-authentication": "~0.4.1",
+    "angular-pouchdb": "~2.1.1"
   }
 }
