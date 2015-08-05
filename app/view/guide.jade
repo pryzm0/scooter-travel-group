@@ -1,24 +1,9 @@
 extends _layout
 
+block title
+  title #{guide.name} &mdash; Пхукет на мотобайках / Phuket Scooter Travel
+
 block content
-  h2.guide-name #{name}
+  div.article-travel-content!= _markdown(guide.content)
 
-  h4.text-right
-    ul.list-inline
-      li Маршруты:
-      li: a(href='/travel/север') На север
-      li &mdash;
-      li: a(href='/travel/запад') На запад
-      li &mdash;
-      li: a(href='/travel/вверх') Вверх
-
-block content-local
-  .container
-    img.img-rounded.pull-left.guide-portrait(src='/assets/chuck.jpg')
-
-    include _lorem
-
-  .container.text-center
-    hr
-
-    button.btn.btn-info Вопросы гиду
+  button.btn.btn-info Вопросы гиду

@@ -3,28 +3,6 @@ extends _layout
 block content
   h2 Наши гиды
 
-block content-local
-  .container
-    .row
-      .col-md-5
-        include _lorem
-
-      .col-md-1 &nbsp;
-
-      .col-md-6
-
-        .row.guide-row
-          .col-md-6.text-center.guide-info
-            a(href='/member/андрей'): img.img-thumbnail(src='/assets/chuck.jpg')
-            div: a(href='/member/андрей') Андрей
-          .col-md-6.text-center.guide-info
-            a(href='/member/андрей'): img.img-thumbnail(src='/assets/chuck.jpg')
-            div: a(href='/member/борян') Борян
-
-        .row.guide-row
-          .col-md-6.text-center.guide-info
-            a(href='/member/андрей'): img.img-thumbnail(src='/assets/chuck.jpg')
-            div: a(href='/member/валентин') Валентин
-          .col-md-6.text-center.guide-info
-            a(href='/member/андрей'): img.img-thumbnail(src='/assets/chuck.jpg')
-            div: a(href='/member/гиппократ') Гиппократ
+  ul
+    each guide in guides
+      li: a(href='/member/#{guide.link}') #{guide.name}
