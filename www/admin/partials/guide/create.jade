@@ -1,0 +1,16 @@
+
+.container
+  h4 #[a(href='#/guide') Гиды] &raquo; Новый
+
+  form.form-horizontal.my-content-form(ng-submit='create()')
+    .form-group(ng-class='{"has-error": formError}')
+      label.control-label.col-sm-2 Имя
+      .col-sm-10
+        input.form-control(type='text', ng-model='guide.name', autofocus)
+    .form-group(ng-class='{"has-error": formError}')
+      label.control-label.col-sm-2 Путь
+      .col-sm-10
+        input.form-control(type='text', ng-model='guide.link')
+    .form-group
+      .col-sm-12.text-right
+        button.btn.btn-default(type='submit') Создать

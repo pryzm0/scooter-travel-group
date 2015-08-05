@@ -25,7 +25,7 @@ angular.module('AdminApp')
       total: 0
       counts: []
       getData: ($defer, params) ->
-        $scope.auth.db.query('articles/listRows').then (result) ->
+        $scope.auth.db.query('article/listRows').then (result) ->
           params.total(result.total_rows)
           $defer.resolve(result.rows)
         return
@@ -76,10 +76,75 @@ angular.module('AdminApp')
   ($scope, $location) ->
     $scope.travel = {
       type: 'article'
+      link: ''
       title: 'Новый маршрут'
       author: {}
     }
     $scope.create = ->
       $scope.auth.db.post($scope.travel).then (doc) ->
         $location.path "/travel/#{doc.id}"
+]
+.controller 'ListGuideController', ['$scope', 'ngTableParams',
+  ($scope, ngTableParams) ->
+    $scope.tableParams = new ngTableParams(TABLECONF, {
+      total: 0
+      counts: []
+      getData: ($defer, params) ->
+        $scope.auth.db.query('guide/listRows').then (result) ->
+          params.total(result.total_rows)
+          $defer.resolve(result.rows)
+        return
+    })
+
+    $scope.remove = (key) ->
+      $scope.auth.db.get(key)
+        .then (doc) -> $scope.auth.db.remove(doc)
+        .then -> $scope.tableParams.reload()
+]
+.controller 'EditGuideController', ['$scope', '$q', '$routeParams', 'Conf',
+  ($scope, $q, $routeParams, Conf) ->
+    reloadDoc = ->
+      $scope.auth.db.get($routeParams.key).then (doc) ->
+        $scope.guide = doc
+
+    $scope.guide = {}
+    reloadDoc()
+
+    $scope.update = ->
+      $scope.auth.db.put($scope.guide).then (doc) ->
+        $scope.guide._rev = doc.rev
+
+    $scope.attachmentUrl = (filename) ->
+      "/image/guide/#{$scope.guide.link}/#{filename}"
+
+    $scope.upload = (files) ->
+      unless files and files.length
+        return
+
+      { _id, _rev } = $scope.guide
+
+      uploads = for file in files
+        $scope.auth.db.putAttachment(_id, file.name, _rev, file, file.type)
+
+      $scope.uploading = true
+      $q.all(uploads)
+        .then -> reloadDoc()
+        .finally -> $scope.uploading = false
+
+    $scope.listImages = ->
+      unless $scope.guide._attachments
+        return []
+      Object.keys($scope.guide._attachments).map (filename) ->
+        $scope.attachmentUrl(filename)
+]
+.controller 'CreateGuideController', ['$scope', '$location',
+  ($scope, $location) ->
+    $scope.guide = {
+      type: 'guide'
+      link: ''
+      name: ''
+    }
+    $scope.create = ->
+      $scope.auth.db.post($scope.guide).then (doc) ->
+        $location.path "/guide/#{doc.id}"
 ]

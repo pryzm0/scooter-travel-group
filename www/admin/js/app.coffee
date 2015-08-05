@@ -26,6 +26,18 @@ angular.module 'AdminApp', [
         templateUrl: 'partials/travel/edit.html'
         controller: 'EditTravelController'
       }
+      .when '/guide', {
+        templateUrl: 'partials/guide/list.html'
+        controller: 'ListGuideController'
+      }
+      .when '/guide/new', {
+        templateUrl: 'partials/guide/create.html'
+        controller: 'CreateGuideController'
+      }
+      .when '/guide/:key', {
+        templateUrl: 'partials/guide/edit.html'
+        controller: 'EditGuideController'
+      }
       .otherwise '/travel'
 
     $locationProvider.html5Mode(false)

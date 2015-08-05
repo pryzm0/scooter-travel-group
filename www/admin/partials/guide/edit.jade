@@ -1,0 +1,12 @@
+
+.container
+  h4
+    a(ng-href='/guide/{{ guide.link }}', target='_blank')
+      i.fa.fa-external-link
+    span &nbsp;
+    a(href='#/guide') Гиды
+    span &nbsp;&raquo;&nbsp; {{ guide.name }}
+
+  tabset(justified='true')
+    tab(heading='Content'): div(ng-include='"partials/guide/form.html"')
+    tab(heading='Gallery'): div(ng-include='"partials/guide/attachments.html"')

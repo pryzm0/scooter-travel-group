@@ -1,0 +1,26 @@
+
+form.form-horizontal.my-content-form(ng-submit='update()')
+  .form-group(ng-class='{"has-error": formError}')
+    label.control-label.col-sm-2 Имя
+    .col-sm-10
+      input.form-control(type='text', ng-model='guide.name', autofocus)
+  .form-group(ng-class='{"has-error": formError}')
+    label.control-label.col-sm-2 Содержание
+    .col-sm-10
+      textarea(rows=10, ng-model='guide.content', markdown-editor,
+                data-image-list='listImages()')
+  .form-group(ng-class='{"has-error": formError}')
+    label.control-label.col-sm-2 Путь
+    .col-sm-10
+      input.form-control(type='text', ng-model='guide.link', readonly)
+  .form-group(ng-class='{"has-error": formError}')
+    label.control-label.col-sm-2 Тэги
+    .col-sm-10
+      input.form-control(type='text', ng-model='guide.keywords')
+  .form-group(ng-class='{"has-error": formError}')
+    label.control-label.col-sm-2 Описание
+    .col-sm-10
+      input.form-control(type='text', ng-model='guide.description')
+  .form-group
+    .col-sm-12.text-right
+      button.btn.btn-success(type='submit') Сохранить

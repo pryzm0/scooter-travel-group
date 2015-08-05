@@ -1,0 +1,19 @@
+.container
+  .row
+    .col-md-10 &nbsp;
+    .col-md-12.text-right
+      button.btn.btn-success(ngf-select, ngf-multiple='true', ngf-change='upload($files)') Загрузить
+
+.container
+  table.table
+    thead
+      th Preview
+      th Filename
+      th Content-type
+      th Size
+    tbody
+      tr(ng-repeat='(name, data) in guide._attachments')
+        td: img.attachment-preview(ng-src='{{ attachmentUrl(name) }}')
+        td: a(ng-href='{{ attachmentUrl(name) }}', target='_blank') {{ name }}
+        td {{ data.content_type }}
+        td {{ data.length }}

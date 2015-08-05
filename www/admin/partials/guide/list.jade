@@ -1,0 +1,12 @@
+
+.container
+  div.text-right
+    a(href='#/guide/new'): button.btn.btn-success Новый гид
+
+  table.table(ng-table='tableParams')
+    tr(ng-repeat='row in $data')
+      td(data-title='"Имя"')
+        a(ng-href='#/guide/{{ row.key }}') {{ row.value.name }}
+      td.text-right
+        button.btn.btn-xs.btn-default(ng-click='remove(row.key)')
+          i.fa.fa-remove
