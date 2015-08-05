@@ -19,53 +19,67 @@ angular.module('AdminApp')
       $scope.auth.login($scope.formData)
         .then null, -> $scope.formError = true
 ]
-.controller 'EditTravelController', ->
+.controller 'ListTravelController', ['$scope', 'ngTableParams',
+  ($scope, ngTableParams) ->
+    $scope.tableParams = new ngTableParams(TABLECONF, {
+      total: 0
+      counts: []
+      getData: ($defer, params) ->
+        $scope.auth.db.query('articles/listRows').then (result) ->
+          params.total(result.total_rows)
+          $defer.resolve(result.rows)
+        return
+    })
 
-# .controller 'EditTravelController', [
-#   '$scope', '$timeout', 'ngTableParams', 'TravelList', 'Travel'
-#   ($scope, $timeout, ngTableParams, TravelList, Travel) ->
-#     $scope.travelEdit = null
+    $scope.remove = (key) ->
+      $scope.auth.db.get(key)
+        .then (doc) -> $scope.auth.db.remove(doc)
+        .then -> $scope.tableParams.reload()
+]
+.controller 'EditTravelController', ['$scope', '$q', '$routeParams', 'Conf',
+  ($scope, $q, $routeParams, Conf) ->
+    reloadDoc = ->
+      $scope.auth.db.get($routeParams.key).then (doc) ->
+        $scope.travel = doc
 
-#     $scope.tableParams = new ngTableParams(TABLECONF, {
-#       total: 0
-#       counts: []
-#       getData: ($defer, params) ->
-#         TravelList.get params.url(), (data) ->
-#           $timeout ->
-#             params.total(data.total)
-#             $defer.resolve(data.rows)
-#           , 500
-#         return
-#     })
+    $scope.travel = {}
+    reloadDoc()
 
-#     $scope.create = ->
-#       $scope.travelEdit = new Travel({
-#         type: 'article'
-#         link: ''
-#         keywords: ''
-#         description: ''
-#         title: ''
-#         author: ''
-#         content: ''
-#       })
+    $scope.update = ->
+      $scope.auth.db.put($scope.travel).then (doc) ->
+        $scope.travel._rev = doc.rev
 
-#     $scope.load = (row) ->
-#       $scope.travelEdit = new Travel()
-#       $scope.travelEdit.$get { key: row.id }
+    $scope.attachmentUrl = (filename) ->
+      "/image/travel/#{$scope.travel.link}/#{filename}"
 
-#     $scope.update = ->
-#       (if $scope.travelEdit._rev
-#         $scope.travelEdit.$save()
-#       else
-#         $scope.travelEdit = TravelList.save($scope.travelEdit)
-#         $scope.travelEdit.$promise)
-#       .then (data) ->
-#           $scope.tableParams.reload()
+    $scope.upload = (files) ->
+      unless files and files.length
+        return
 
-#     $scope.remove = (row=$scope.travelEdit) ->
-#       if row
-#         Travel.remove({ key: row.id }).$promise.then ->
-#           if row.id == $scope.travelEdit?._id
-#             $scope.travelEdit = null
-#           $scope.tableParams.reload()
-# ]
+      { _id, _rev } = $scope.travel
+
+      uploads = for file in files
+        $scope.auth.db.putAttachment(_id, file.name, _rev, file, file.type)
+
+      $scope.uploading = true
+      $q.all(uploads)
+        .then -> reloadDoc()
+        .finally -> $scope.uploading = false
+
+    $scope.listImages = ->
+      unless $scope.travel._attachments
+        return []
+      Object.keys($scope.travel._attachments).map (filename) ->
+        $scope.attachmentUrl(filename)
+]
+.controller 'CreateTravelController', ['$scope', '$location',
+  ($scope, $location) ->
+    $scope.travel = {
+      type: 'article'
+      title: 'Новый маршрут'
+      author: {}
+    }
+    $scope.create = ->
+      $scope.auth.db.post($scope.travel).then (doc) ->
+        $location.path "/travel/#{doc.id}"
+]

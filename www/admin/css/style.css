@@ -13,3 +13,6 @@
 .ng-table-pager {
     display: none;
 }
+.attachment-preview {
+	max-height: 60px;
+}

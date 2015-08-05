@@ -1,0 +1,7 @@
+.modal-body
+  a.pull-left(href='#', ng-repeat='image in imageList',
+              ng-click='done(image, $event.preventDefault())')
+    img.img-thumbnail(ng-src='{{ image }}',
+      style={'max-height': '120px', 'margin': '0 0 1em 1em'})
+
+  div.clearfix &nbsp;

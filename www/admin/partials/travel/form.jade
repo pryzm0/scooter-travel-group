@@ -3,30 +3,31 @@ form.form-horizontal.my-content-form(ng-submit='update()')
   .form-group(ng-class='{"has-error": formError}')
     label.control-label.col-sm-2 Название
     .col-sm-10
-      input.form-control(type='text', ng-model='travelEdit.title', autofocus)
+      input.form-control(type='text', ng-model='travel.title', autofocus)
   .form-group(ng-class='{"has-error": formError}')
     label.control-label.col-sm-2 Гид
     .col-sm-10
-      select.form-control(ng-model='travelEdit.author.id')
+      select.form-control(ng-model='travel.author.id')
         option(value='egor') Егор
         option(value='ivan') Иван
         option(value='solon') Солон
   .form-group(ng-class='{"has-error": formError}')
     label.control-label.col-sm-2 Содержание
     .col-sm-10
-      textarea(rows=10, ng-model='travelEdit.content', markdown-editor)
+      textarea(rows=10, ng-model='travel.content', markdown-editor,
+                data-image-list='listImages()')
   .form-group(ng-class='{"has-error": formError}')
     label.control-label.col-sm-2 Путь
     .col-sm-10
-      input.form-control(type='text', ng-model='travelEdit.link')
+      input.form-control(type='text', ng-model='travel.link', readonly)
   .form-group(ng-class='{"has-error": formError}')
     label.control-label.col-sm-2 Тэги
     .col-sm-10
-      input.form-control(type='text', ng-model='travelEdit.keywords')
+      input.form-control(type='text', ng-model='travel.keywords')
   .form-group(ng-class='{"has-error": formError}')
     label.control-label.col-sm-2 Описание
     .col-sm-10
-      input.form-control(type='text', ng-model='travelEdit.description')
+      input.form-control(type='text', ng-model='travel.description')
   .form-group
     .col-sm-12.text-right
-      button.btn.btn-default(type='submit') Сохранить
+      button.btn.btn-success(type='submit') Сохранить

@@ -43,3 +43,11 @@ router.get '/travel/:name', (req, res) ->
     else res.render 'route', _t {
       article: _.first(data.rows).value
     }
+
+router.get '/image/travel/:name/:file', (req, res) ->
+  db.view 'articles', 'link', { key: req.params.name }, (err, data) ->
+    unless not err and (data.rows.length > 0) then res.status(404)
+    else
+      docname = _.first(data.rows).id
+      db.attachment.get(docname, req.params.file)
+        .pipe(res)

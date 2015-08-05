@@ -5,18 +5,25 @@ angular.module 'AdminApp', [
   'ngRoute'
   'ngResource'
   'ngTable'
+  'ngFileUpload'
   'pouchdb'
 ]
 .constant 'Conf', {
   database: 'http://localhost:5984/travelapp'
 }
-.directive 'markdownEditor', ->
-  ($scope, $element) -> $element.markdown()
 .config ['$routeProvider', '$locationProvider',
   ($routeProvider, $locationProvider) ->
     $routeProvider
       .when '/travel', {
-        templateUrl: 'partials/travel.html'
+        templateUrl: 'partials/travel/list.html'
+        controller: 'ListTravelController'
+      }
+      .when '/travel/new', {
+        templateUrl: 'partials/travel/create.html'
+        controller: 'CreateTravelController'
+      }
+      .when '/travel/:key', {
+        templateUrl: 'partials/travel/edit.html'
         controller: 'EditTravelController'
       }
       .otherwise '/travel'

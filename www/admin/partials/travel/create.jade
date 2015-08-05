@@ -1,0 +1,23 @@
+
+.container
+  h4 #[a(href='#/travel') Маршруты] &raquo; Новый
+
+  form.form-horizontal.my-content-form(ng-submit='create()')
+    .form-group(ng-class='{"has-error": formError}')
+      label.control-label.col-sm-2 Название
+      .col-sm-10
+        input.form-control(type='text', ng-model='travel.title')
+    .form-group(ng-class='{"has-error": formError}')
+      label.control-label.col-sm-2 Путь
+      .col-sm-10
+        input.form-control(type='text', ng-model='travel.link', autofocus)
+    .form-group(ng-class='{"has-error": formError}')
+      label.control-label.col-sm-2 Гид
+      .col-sm-10
+        select.form-control(ng-model='travel.author.id')
+          option(value='egor') Егор
+          option(value='ivan') Иван
+          option(value='solon') Солон
+    .form-group
+      .col-sm-12.text-right
+        button.btn.btn-default(type='submit') Создать

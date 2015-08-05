@@ -1,0 +1,13 @@
+
+.container
+  div.text-right
+    a(href='#/travel/new'): button.btn.btn-success Новый маршрут
+
+  table.table(ng-table='tableParams')
+    tr(ng-repeat='row in $data')
+      td(data-title='"Название"')
+        a(ng-href='#/travel/{{ row.key }}') {{ row.value.title }}
+      td(data-title='"Автор"') {{ row.value.author.id }}
+      td.text-right
+        button.btn.btn-xs.btn-default(ng-click='remove(row.key)')
+          i.fa.fa-remove

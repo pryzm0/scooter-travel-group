@@ -1,0 +1,13 @@
+
+.container
+  h4
+    a(ng-href='/travel/{{ travel.link }}', target='_blank')
+      i.fa.fa-external-link
+    span &nbsp;
+    a(href='#/travel') Маршруты
+    span &nbsp;&raquo;&nbsp; {{ travel.title }}
+
+  tabset(justified='true')
+    tab(heading='Content'): div(ng-include='"partials/travel/form.html"')
+    tab(heading='Map'): div Map
+    tab(heading='Gallery'): div(ng-include='"partials/travel/attachments.html"')
