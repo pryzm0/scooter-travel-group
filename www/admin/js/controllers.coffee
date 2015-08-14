@@ -125,6 +125,7 @@ angular.module('AdminApp')
 
       uploads = for file in files
         $scope.auth.db.putAttachment(_id, file.name, _rev, file, file.type)
+          .then null, (err) -> console.error 'upload failed', err
 
       $scope.uploading = true
       $q.all(uploads)
