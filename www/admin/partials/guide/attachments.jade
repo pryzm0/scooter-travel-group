@@ -1,8 +1,5 @@
-.container
-  .row
-    .col-md-10 &nbsp;
-    .col-md-12.text-right
-      button.btn.btn-success(ngf-select, ngf-multiple='true', ngf-change='upload($files)') Загрузить
+.container.text-right
+  button.btn.btn-success(ngf-select, ngf-multiple='true', ng-disabled='uploading', ngf-change='upload($files)') #[i.fa.fa-4x.fa-spinner.fa-pulse(ng-show='uploading')] Загрузить
 
 .container
   table.table
