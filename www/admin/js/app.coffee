@@ -9,7 +9,7 @@ angular.module 'AdminApp', [
   'pouchdb'
 ]
 .constant 'Conf', {
-  database: 'http://localhost:5984/travelapp'
+  database: 'http://128.199.180.237:5984/travelapp'
 }
 .config ['$routeProvider', '$locationProvider',
   ($routeProvider, $locationProvider) ->
