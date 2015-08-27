@@ -6,15 +6,15 @@
     .form-group(ng-class='{"has-error": formError}')
       label.control-label.col-sm-2 Название
       .col-sm-10
-        input.form-control(type='text', ng-model='travel.title')
+        input.form-control(type='text', ng-model='doc.title')
     .form-group(ng-class='{"has-error": formError}')
       label.control-label.col-sm-2 Путь
       .col-sm-10
-        input.form-control(type='text', ng-model='travel.link', autofocus)
+        input.form-control(type='text', ng-model='doc.link', autofocus)
     .form-group(ng-class='{"has-error": formError}')
       label.control-label.col-sm-2 Гид
       .col-sm-10
-        select.form-control(ng-model='travel.author.id')
+        select.form-control(ng-model='doc.author.id')
           option(value='egor') Егор
           option(value='ivan') Иван
           option(value='solon') Солон

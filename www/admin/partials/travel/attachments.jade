@@ -9,8 +9,8 @@
       th Content-type
       th Size
     tbody
-      tr(ng-repeat='(name, data) in travel._attachments')
-        td: img.attachment-preview(ng-src='{{ attachmentUrl(name) }}')
-        td: a(ng-href='{{ attachmentUrl(name) }}', target='_blank') {{ name }}
-        td {{ data.content_type }}
-        td {{ data.length }}
+      tr(ng-repeat='file in attachments')
+        td: img.attachment-preview(ng-src='{{ file.thumb }}')
+        td: a(ng-href='{{ file.href }}', target='_blank') {{ file.name }}
+        td {{ file.type }}
+        td {{ file.size }}

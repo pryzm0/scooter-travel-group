@@ -9,6 +9,7 @@ app.set 'view engine', 'jade'
 
 app.use (require 'body-parser').json()
 app.use (require './route/index')
+app.use (require './route/assets')
 
 if nconf.get 'static:serve'
   logger.info '* serve static *'

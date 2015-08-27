@@ -1,10 +1,10 @@
 router = (require 'express').Router()
 module.exports = router
 
-nconf = require '../config'
+db = require '../database'
 logger = require '../logger'
+nconf = require '../config'
 
-db = (require 'nano')(nconf.get 'database')
 Remarkable = require 'remarkable'
 
 _ = require 'lodash'
@@ -13,7 +13,6 @@ _t = (scope) -> _.extend scope, {
   _markdown: (template) ->
     new Remarkable().render template
 }
-
 
 router.get '/', (req, res) ->
   res.render 'index', _t {}
@@ -51,19 +50,3 @@ router.get '/travel/:name', (req, res) ->
     else res.render 'route', _t {
       article: _.first(data.rows).value
     }
-
-router.get '/image/travel/:name/:file', (req, res) ->
-  db.view 'article', 'link', { key: req.params.name }, (err, data) ->
-    unless not err and (data.rows.length > 0) then res.status(404)
-    else
-      docname = _.first(data.rows).id
-      db.attachment.get(docname, req.params.file)
-        .pipe(res)
-
-router.get '/image/guide/:name/:file', (req, res) ->
-  db.view 'guide', 'link', { key: req.params.name }, (err, data) ->
-    unless not err and (data.rows.length > 0) then res.status(404)
-    else
-      docname = _.first(data.rows).id
-      db.attachment.get(docname, req.params.file)
-        .pipe(res)

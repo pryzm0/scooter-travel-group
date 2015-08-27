@@ -20,7 +20,9 @@ angular.module('AdminApp')
             templateUrl: 'partials/editor/imageSelect.html'
             controller: 'EditorImageSelectController'
             resolve: {
-              imageList: -> $scope.$eval(attrs.imageList)
+              imageList: ->
+                for item in $scope.$eval(attrs.attachments)
+                  item.href
             }
           }).result.then (link) ->
             selected = e.getSelection()

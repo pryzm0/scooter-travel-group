@@ -10,17 +10,15 @@
     "express": "^4.13.1",
     "nano": "^6.1.4",
     "nconf": "^0.7.1",
-    "express-session": "~1.11.3",
     "cookie-parser": "~1.3.5",
     "body-parser": "~1.13.2",
     "express-user-couchdb": "~0.3.5",
     "jade": "~1.11.0",
-    "grant": "~3.4.0",
-    "grant-express": "~3.4.0",
     "remarkable": "~1.6.0",
     "marked": "~0.3.4",
     "lodash": "~3.10.0",
-    "connect-memcached": "~0.1.0"
+    "exec-stream": "~0.1.0",
+    "q": "~1.4.1"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
