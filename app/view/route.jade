@@ -9,3 +9,9 @@ block content
   h3(style={'margin-top':'2em'})
     a(href='/travel/next')
       button.btn.btn-success: i.fa.fa-hand-o-right &nbsp;&nbsp;Принять участие
+
+block content-local
+  .container
+    - var _disqus_identifier = article._id;
+    - var _disqus_title = article.title;
+    include _disqus

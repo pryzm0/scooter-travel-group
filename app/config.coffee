@@ -9,6 +9,8 @@ module.exports = (require 'nconf')
       url: 'http://127.0.0.1:5984/travelapp'
       requestDefaults:
         auth: { user: 'master', pass: '' }
+    disqus:
+      name: 'phuketscootertravel'
     cache:
       expire: 7*24*3600
     static:
