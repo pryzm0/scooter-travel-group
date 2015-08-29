@@ -55,6 +55,7 @@ angular.module('AdminApp')
     $scope.update = ->
       $scope.auth.db.put($scope.doc).then (_doc) ->
         $scope.doc._rev = _doc.rev
+        alert 'Document updated'
 
     $scope.upload = (files) ->
       unless files and files.length

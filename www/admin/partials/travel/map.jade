@@ -1,0 +1,6 @@
+form(ng-submit='update()')
+  .form-group(ng-class='{"has-error": formError}')
+    label.control-label GeoJSON (#[a(href='https://www.mapbox.com/editor/', target='_blank') create])
+    textarea.form-control(rows=10, ng-model='doc.geoJson')
+  .form-group.text-right
+    button.btn.btn-success(type='submit') Сохранить

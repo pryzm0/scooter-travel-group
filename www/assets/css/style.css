@@ -1,62 +1,68 @@
 
 #bike:hover {
-	-webkit-transition: all 1s ease;
-	-webkit-transform: rotate(360deg);
+  -webkit-transition: all 1s ease;
+  -webkit-transform: rotate(360deg);
 }
 
 .guide-row {
-	margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .guide-info a {
-	text-transform: uppercase;
-	font-size: 18pt;
+  text-transform: uppercase;
+  font-size: 18pt;
 }
 
 .guide-name {
-	text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 .guide-portrait {
-	margin: 0 2em 2em 0;
+  margin: 0 2em 2em 0;
 }
 
 .route-name {
-	text-transform: capitalize;
-	font-style: italic;
+  text-transform: capitalize;
+  font-style: italic;
 }
 
 .article-travel-content {
 }
 
 .article-travel-content p img {
-	margin: 1em auto;
-	display: block;
-	max-width: 80vw;
+  margin: 1em auto;
+  display: block;
+  max-width: 80vw;
 }
 
 .article-travel-content h1 img {
-	float: right;
-	max-height: 400px;
-	margin: 0 0 2em 2em;
+  float: right;
+  max-height: 400px;
+  margin: 0 0 2em 2em;
 }
 
 .article-travel-content h2+p img {
-	float: left;
-	max-width: 160px;
-	margin: 0 2em 2em 0;
+  float: left;
+  max-width: 160px;
+  margin: 0 2em 2em 0;
 }
 
 .article-travel-content blockquote img {
-	float: left;
-	max-width: 160px;
-	margin: 0 2em 2em 0;
+  float: left;
+  max-width: 160px;
+  margin: 0 2em 2em 0;
 }
 
 .article-travel-content blockquote img:last-child {
-	clear: both;
+  clear: both;
 }
 
 .article-travel-content blockquote h5 {
-	clear: both;
+  clear: both;
+}
+
+#map {
+  margin: 2em 0 1em 3em;
+  width: 33vw;
+  height: 75vh;
 }

@@ -3,8 +3,13 @@ extends _layout
 block title
   title #{article.title} &mdash; Пхукет на мотобайках / Phuket Scooter Travel
 
+block style-local
+  link(rel='stylesheet', href='/bower_components/leaflet/dist/leaflet.css')
+
 block content
-  div.article-travel-content!= _markdown(article.content)
+  .pull-right#map
+
+  .article-travel-content!= _markdown(article.content)
 
   h3(style={'margin-top':'2em'})
     a(href='/travel/next')
@@ -15,3 +20,9 @@ block content-local
     - var _disqus_identifier = article._id;
     - var _disqus_title = article.title;
     include _disqus
+
+block script-local
+  script(src='/bower_components/leaflet/dist/leaflet.js')
+  - var _mapInitial = [7.943, 98.339];
+  - var _mapGeoJson = article.geoJson;
+  include _map
